@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheet as Database</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
+        h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .loading { font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+
+    <h2>Data dari Google Spreadsheet</h2>
+    <p id="status" class="loading">Memuat data...</p>
+
+    <table id="dataTable" style="display: none;">
+        <thead>
+            <tr id="tableHeaders"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        // Ganti URL di bawah ini dengan Web App URL yang Anda dapatkan dari Google Apps Script
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzL7jqGnY7KeQaSj6tbjJEc9MmeaQhuCT1d-HIsUQLa-vLQj_Hm8ItU3uEKxzX6tURnow/exec";
+
+        fetch(WEB_APP_URL)
+            .then(response => response.json())
+            .then(data => {
+                const statusEl = document.getElementById('status');
+                const tableEl = document.getElementById('dataTable');
+                const headersTr = document.getElementById('tableHeaders');
+                const tbodyEl = document.getElementById('tableBody');
+
+                if (data.length === 0) {
+                    statusEl.textContent = "Tidak ada data ditemukan.";
+                    return;
+                }
+
+                // Sembunyikan teks loading dan tampilkan tabel
+                statusEl.style.display = 'none';
+                tableEl.style.display = 'table';
+
+                // Buat Header Tabel secara otomatis berdasarkan kunci JSON
+                const keys = Object.keys(data[0]);
+                keys.forEach(key => {
+                    let th = document.createElement('th');
+                    th.textContent = key.toUpperCase();
+                    headersTr.appendChild(th);
+                });
+
+                // Masukkan Baris Data ke dalam Tabel
+                data.forEach(row => {
+                    let tr = document.createElement('tr');
+                    keys.forEach(key => {
+                        let td = document.createElement('td');
+                        td.textContent = row[key];
+                        tr.appendChild(td);
+                    });
+                    tbodyEl.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('status').textContent = "Gagal memuat data.";
+            });
+    </script>
+
+</body>
+</html>
