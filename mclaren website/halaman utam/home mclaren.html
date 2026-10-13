@@ -7,48 +7,47 @@
 </head>
 <body>
 
-  <!-- loop pada kalimat autoplay muted loop id berfungsi untuk memutar terus menerus  -->
+  <!-- Video Background -->
   <video autoplay muted id="bg-video">
-  <source src="videos/mcllaren video home.mp4" type="video/mp4"id="video-source">
-</video>
+    <source src="../msn/videos/mclaren video home.mp4" type="video/mp4" id="video-source">
+  </video>
 
-<style>
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-</style>
+  <style>
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+  </style>
 
-
-<header class="navbar">
-  <div class="nav-left">
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-  </div>
 
-  <nav class="nav-center">
-    <a href="mclareen 2.html">HOME</a>
-    <a href="login/halaman login.html">EXPLORE</a>
-    <a href="#">AUTOMOTIVE</a>
-    <a href="#">ANNOUNCEMENT</a>
-    <a href="#">ABOUT US</a>  
-  </nav>
+    <nav class="nav-center">
+      <a href="home mclaren.html">HOME</a>
+      <a href="../msn/msn.html">EXPLORE</a>
+      <a href="#">AUTOMOTIVE</a>
+      <a href="#">ANNOUNCEMENT</a>
+      <a href="#">ABOUT US</a>  
+    </nav>
 
-  <div class="nav-right">
-    <img src="foto/MCLAREN LOGO.png" alt="Logo">
-  </div>
-</header>
+    <div class="nav-right">
+      <img src="../msn/videos/MCLAREN LOGO.png" alt="Logo">
+    </div>
+  </header>
 
-<style>
-   .overlay {
+  <style>
+    .overlay {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -56,40 +55,33 @@
       color: white;
       text-align: center;
     }
-    </style>
-<div class="overlay">
-  <h1>Welcome</h1>
+  </style>
+
+  <div class="overlay">
+    <h1>Welcome</h1>
+  </div>
 
   <script>
-  const videoPlayer = document.getElementById('bg-video');
-  const videoSource = document.getElementById('video-source');
+    const videoPlayer = document.getElementById('bg-video');
+    const videoSource = document.getElementById('video-source');
 
-  // Daftar nama file video kamu di laptop
-  const playlist = [
-    "foto/MCLAREN VIDEO.mp4", 
-    "foto/FERRARI VIDEO.mp4", 
-    "foto/LAMBO VIDEDO.mp4"
-  ];
+    // Daftar video disesuaikan dengan folder msn/videos/
+    const playlist = [
+      "../msn/videos/mclaren video home.mp4"
+    ];
 
-  let currentVideoIndex = 0;
+    let currentVideoIndex = 0;
 
-  // Fungsi untuk mengganti video
-  videoPlayer.onended = function() {
-    currentVideoIndex++;
-    
-    // Jika sudah sampai video terakhir, kembali ke video pertama
-    if (currentVideoIndex >= playlist.length) {
-      currentVideoIndex = 0;
-    }
-
-    // Ganti sumber video
-    videoSource.src = playlist[currentVideoIndex];
-    
-    // Muat dan putar video baru
-    videoPlayer.load();
-    videoPlayer.play();
-  };
-</script>
+    videoPlayer.onended = function() {
+      currentVideoIndex++;
+      if (currentVideoIndex >= playlist.length) {
+        currentVideoIndex = 0;
+      }
+      videoSource.src = playlist[currentVideoIndex];
+      videoPlayer.load();
+      videoPlayer.play();
+    };
+  </script>
 
 </body>
 </html>
