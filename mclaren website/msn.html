@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>News UI</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: url('') no-repeat center/cover;
+  color: white;
+}
+
+/* overlay biar gelap */
+.overlay {
+  background: rgba(0,0,0,0.6);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* GRID */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+/* CARD */
+.card {
+  background: #1e1e1e;
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* TEXT */
+.card p {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* SLIDER */
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slides {
+  display: flex;
+  transition: 0.5s;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.slider-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 18px;
+}
+
+/* tombol slider */
+.btn-slide {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<!-- SLIDER -->
+<div class="slider">
+  <div class="slides" id="slides">
+    <div class="slide">
+      <img src="foto/interior mclaren.jpg">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/800/300?2">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/800/300?3">
+    </div>
+  </div>
+
+  <div class="slider-text">Berita utama hari ini</div>
+
+  <button class="btn-slide prev" onclick="prev()">❮</button>
+  <button class="btn-slide next" onclick="next()">❯</button>
+</div>
+
+<br>
+
+<!-- GRID BERITA -->
+<div class="container">
+
+<a href="page.html" class="card">
+  <img src="foto/interior mclaren.jpg">
+  <p>p1 gtr information</p>
+</a>
+
+<a href="halaman2.html" class="card">
+  <img src="foto/p1 open door.jpg">
+  <p>P1</p>
+</a>
+
+<a href="halaman3.html" class="card">
+  <img src="foto/senna.jpg">
+  <p>senna</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="https://picsum.photos/300/200?7">
+  <p>Judul berita 4</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+<a href="halaman4.html" class="card">
+  <img src="foto/laferrari .jpg">
+  <p>la ferrari</p>
+</a>
+
+</div>
+
+<script>
+let index = 0;
+const slides = document.getElementById("slides");
+
+function showSlide() {
+  slides.style.transform = "translateX(" + (-index * 100) + "%)";
+}
+
+function next() {
+  index = (index + 1) % 3;
+  showSlide();
+}
+
+function prev() {
+  index = (index - 1 + 3) % 3;
+  showSlide();
+}
+
+/* auto geser */
+setInterval(next, 3000);
+</script>
+
+</body>
+</html>

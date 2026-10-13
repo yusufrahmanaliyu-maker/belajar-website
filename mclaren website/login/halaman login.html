@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      width: 350px;
+      background: #1e1e1e;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 30px;
+      border: none;
+      background: #2c2c2c;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn:hover {
+      background: #3a3a3a;
+    }
+
+    .divider {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      color: #888;
+      font-size: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #444;
+      margin: 0 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 25px;
+      border: none;
+      background: #2c2c2c;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .submit-btn {
+      background: white;
+      color: black;
+      font-weight: bold;
+      border-radius: 30px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>Masuk atau daftar</h2>
+  <p>Anda akan mendapatkan respons yang lebih pintar dan dapat mengunggah file, gambar, dan lainnya.</p>
+
+  <button class="btn">🔵 Lanjutkan dengan Google</button>
+  <button class="btn">🍎 Lanjutkan dengan Apple</button>
+  <button class="btn">📞 Lanjutkan dengan telepon</button>
+
+  <div class="divider">ATAU</div>
+
+  <input type="email" placeholder="Alamat email">
+  <button class="submit-btn">Lanjutkan</button>
+</div>
+
+</body>
+</html>
